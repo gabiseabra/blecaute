@@ -1,15 +1,19 @@
 import React from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Logo } from './Logo'
+import { useDepthBuffer } from '@react-three/drei'
+import { Background } from './Background'
+import { Spotlight } from './Spotlight'
 
 export function Scene({}): JSX.Element {
+  const depthBuffer = useDepthBuffer({ size: 256 })
   return (
-    <Canvas>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <mesh position={[0,0,0]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={'hotpink'} />
+    <>
+      <ambientLight color={0x404040} intensity={1.6} />
+      <Spotlight />
+      <mesh position={[-3,0,0]} castShadow>
+        <Logo />
       </mesh>
-    </Canvas>
+      <Background />
+    </>
   )
 }
