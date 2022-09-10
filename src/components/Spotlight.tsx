@@ -10,8 +10,8 @@ export function Spotlight({}): JSX.Element {
   // useHelper(lightRef, THREE.SpotLightHelper)
 
   useFrame(() => {
-    const lightPosScale = 2 * three.viewport.aspect
-    const targetPosScale = 4 * three.viewport.aspect
+    const lightPosScale = 3 * three.viewport.aspect
+    const targetPosScale = 3.5 * three.viewport.aspect
     lightRef.current?.position.setX(three.pointer.x * lightPosScale)
     lightRef.current?.position.setY(three.pointer.y * lightPosScale)
     lightRef.current?.target.position.setX(three.pointer.x * targetPosScale)
@@ -30,8 +30,9 @@ export function Spotlight({}): JSX.Element {
         position={[0, 0, 5]}
         intensity={.5}
         penumbra={0}
+        decay={0}
         angle={.4}
-        color="#ff005b"
+        color={'red'}
         castShadow
       />
     </>

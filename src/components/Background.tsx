@@ -1,10 +1,19 @@
 import React from 'react'
+import { BG_COLOR } from '../config'
+import { DichromaticMaterial } from './materials/Dichromatic'
 
-export function Background() {
+type Props = {
+  children?: React.ReactNode
+}
+
+export function Background({children}: Props) {
   return (
-    <mesh position={[0,0,-2]} receiveShadow>
-      <planeGeometry args={[100, 100]} />
-      <meshToonMaterial color={'hotpink'} />
-    </mesh>
+    <group position={[0,0,-1]}>
+      <mesh receiveShadow position={[0,0,-.0001]}>
+        <planeGeometry args={[100,100]} />
+        <DichromaticMaterial {...BG_COLOR} />
+      </mesh>
+      {children}
+    </group>
   )
 }
