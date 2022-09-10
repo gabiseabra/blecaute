@@ -1,21 +1,22 @@
-import React, { useRef, useEffect } from 'react'
-import { SpotLight, useHelper } from '@react-three/drei'
+import React, { useRef, useEffect, RefObject } from 'react'
+import { SpotLight } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
+type SpotlightProps = {
+  target: RefObject<THREE.Vector3>
+}
 
-export function Spotlight({}): JSX.Element {
+export function Spotlight({ target }: SpotlightProps): JSX.Element {
   const lightRef = useRef<THREE.SpotLight>(null)
   const three = useThree()
-  // useHelper(lightRef, THREE.SpotLightHelper)
 
   useFrame(() => {
-    const lightPosScale = 3 * three.viewport.aspect
-    const targetPosScale = 3.5 * three.viewport.aspect
-    lightRef.current?.position.setX(three.pointer.x * lightPosScale)
-    lightRef.current?.position.setY(three.pointer.y * lightPosScale)
-    lightRef.current?.target.position.setX(three.pointer.x * targetPosScale)
-    lightRef.current?.target.position.setY(three.pointer.y * targetPosScale)
+    const lightPosScale = 0.2
+    if (!target.current) return
+    lightRef.current?.position.setX(target.current.x * lightPosScale)
+    lightRef.current?.position.setY(target.current.y * lightPosScale)
+    lightRef.current?.target.position.copy(target.current)
   })
 
   useEffect(() => {

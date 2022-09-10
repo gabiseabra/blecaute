@@ -9,7 +9,7 @@ type Props = {
 export function Background({children}: Props) {
   return (
     <group position={[0,0,-1]}>
-      <mesh receiveShadow position={[0,0,-.0001]}>
+      <mesh receiveShadow position={[0,0,-.0001]} onPointerMove={console.log}>
         <planeGeometry args={[100,100]} />
         <DichromaticMaterial {...BG_COLOR} />
       </mesh>
