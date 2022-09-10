@@ -5,6 +5,8 @@ export const COLOR_SHADOW = '#000a94'
 export const COLOR_LOGO = '#ff949f'
 export const COLOR_BG = '#ff949f'
 
+export const FONT_CURSIVE = require('url:./fonts/LongCang-Regular.ttf')
+
 export const BG_COLOR: DichromaticMaterialProps = {
   ambient: COLOR_SHADOW,
   diffuse: COLOR_BG,

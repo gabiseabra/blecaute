@@ -1,7 +1,5 @@
 import React, { useRef, useCallback } from 'react'
 import { Logo } from './Logo'
-import { useDepthBuffer } from '@react-three/drei'
-import { Background } from './Background'
 import { Spotlight } from './Spotlight'
 import { Flex, Box } from '@react-three/flex'
 import Text from './Text'

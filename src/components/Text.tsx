@@ -2,7 +2,7 @@ import React from 'react'
 import { useReflow } from '@react-three/flex'
 import { Text as TextImpl } from '@react-three/drei'
 import { DichromaticMaterial } from './materials/Dichromatic'
-import { TEXT_COLOR } from '../config'
+import { FONT_CURSIVE, TEXT_COLOR } from '../config'
 import { useMemo } from 'react'
 
 type Props = Parameters<typeof TextImpl>[0] & {
@@ -18,6 +18,7 @@ export default function Text({color, children, ...props}: Props) {
   return (
       <TextImpl
         // onSync={reflow}
+        font={FONT_CURSIVE}
         anchorX="left"
         anchorY="top"
         textAlign="left"
