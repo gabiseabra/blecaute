@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Flex, Box } from '@react-three/flex'
 import { Size, useThree } from '@react-three/fiber'
-import { Logo } from './Logo'
-import Text from './Text'
-import { DichromaticMaterial } from './materials/Dichromatic'
-import { mapBreakpoint } from '../config'
-import * as THREE from 'three'
+import { Logo } from '../objects/Logo'
+import Text from '../objects/Text'
+import { mapBreakpoint } from '../../config'
 
 const topRow = (size: Size) => (rowWidth: number): JSX.Element => {
   const colWidth = rowWidth * mapBreakpoint({

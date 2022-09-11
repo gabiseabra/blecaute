@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import { useReflow } from '@react-three/flex'
 import { Text as TextImpl } from '@react-three/drei'
-import { DichromaticMaterial } from './materials/Dichromatic'
-import { FONT_CURSIVE, FONT_SIZE_LG, FONT_SIZE_MD, FONT_SIZE_SM, TEXT_COLOR } from '../config'
+import { DichromaticMaterial } from '../materials/Dichromatic'
+import { FONT_CURSIVE, FONT_SIZE_LG, FONT_SIZE_MD, FONT_SIZE_SM, TEXT_COLOR } from '../../config'
 
 type Props = Parameters<typeof TextImpl>[0] & {
   color?: string | number

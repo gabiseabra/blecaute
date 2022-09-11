@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Text3D } from "@react-three/drei"
 import font from './font.json'
-import { DichromaticMaterial } from '../materials/Dichromatic'
-import { LOGO_COLOR } from '../../config'
+import { DichromaticMaterial } from '../../materials/Dichromatic'
+import { LOGO_COLOR } from '../../../config'
 import * as THREE from 'three'
 
 type LogoProps = {

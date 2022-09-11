@@ -1,10 +1,10 @@
 import React, { useRef, useCallback } from 'react'
-import { Spotlight } from './Spotlight'
+import { Spotlight } from './objects/Spotlight'
 import { DichromaticMaterial } from './materials/Dichromatic'
 import { ThreeEvent } from '@react-three/fiber'
 import * as THREE from 'three'
 import { BG_COLOR } from '../config'
-import { LandingPage } from './LandingPage'
+import { LandingPage } from './pages/LandingPage'
 
 export function Scene({}): JSX.Element {
   const pointer = useRef<THREE.Vector3>(new THREE.Vector3(0))
