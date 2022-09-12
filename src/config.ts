@@ -1,18 +1,19 @@
 import { DichromaticMaterialProps } from './components/materials/Dichromatic'
 import Chroma from 'chroma-js'
-import { useThree } from 'react-three-fiber'
+import { Size, useThree } from 'react-three-fiber'
 
-type Breakpoint = "sm" | "md" | "lg"
+type Breakpoint = "sm" | "lg"
 
-export const getBreakpoint = (width: number): Breakpoint => (
-  width <= 576 ? 'sm' : width <= 768 ? 'md' : 'lg'
-)
+export const getBreakpoint = ({width, height}: Size): Breakpoint => {
+  const aspect = width / height
+  return (aspect <= .75 ? 'sm' : 'lg')
+}
 
-export const mapBreakpoint = <A>(map: { [k in Breakpoint]: A }, width: number): A => map[getBreakpoint(width)]
+export const mapBreakpoint = <A>(map: { [k in Breakpoint]: A }, size: Size): A => map[getBreakpoint(size)]
 
 export function useBreakpoint() {
   const { size } = useThree()
-  return getBreakpoint(size.width)
+  return getBreakpoint(size)
 }
 
 export const COLOR_SHADOW = '#000a94'

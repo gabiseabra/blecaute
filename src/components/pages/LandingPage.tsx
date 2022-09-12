@@ -11,14 +11,12 @@ import * as THREE from 'three'
 const topRow = (size: Size) => (rowWidth: number): JSX.Element => {
   const colWidth = rowWidth * mapBreakpoint({
     sm: 1,
-    md: 1,
     lg: 0.5,
-  }, size.width)
+  }, size)
   const colHeight = mapBreakpoint({
     sm: 3,
-    md: 2,
-    lg: 2,
-  }, size.width)
+    lg: 3,
+  }, size)
   return (
     <Box
       centerAnchor
@@ -52,24 +50,20 @@ const contactTextRotation = new THREE.Euler(0,0,0.12)
 const contactRow = (size: Size) => (rowWidth: number, rowHeight: number) => {
   const iconSize = mapBreakpoint({
     sm: .5,
-    md: .5,
     lg: .75
-  }, size.width)
+  }, size)
   const textSize = mapBreakpoint({
     sm: 'sm',
-    md: 'sm',
     lg: 'md'
-  }, size.width) as 'sm' | 'md' | 'lg'
+  }, size) as 'sm' | 'md' | 'lg'
   const contactPosition: [number, number, number] = mapBreakpoint({
     sm: [1.3, 1.2, 0],
-    md: [1.3, 1.2, 0],
     lg: [2.2, 1.5, 0],
-  }, size.width)
+  }, size)
   const contactScale = mapBreakpoint({
     sm: .8,
-    md: .8,
     lg: 1
-  }, size.width)
+  }, size)
   return (
     <>
       <InstagramIcon scale={iconSize} depth={0.1} />
@@ -111,7 +105,6 @@ export function LandingPage({}): JSX.Element {
       align="center"
     >
       <Box
-        pb={.5}
         width="100%"
         maxWidth={9}
         height="50%"
@@ -126,7 +119,6 @@ export function LandingPage({}): JSX.Element {
         {(width: number) => <Logo width={width} />}
       </Box>
       <Box
-        pt={1}
         width="100%"
         height="50%"
         shrink={1}
