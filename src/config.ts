@@ -55,3 +55,7 @@ export const INSTA_COLOR: DichromaticMaterialProps = {
   diffuse: 0xffc869,
   contrast: 2
 }
+
+export const FLASHLIGHT_COLOR = {
+  color: 0xffffff
+} as const

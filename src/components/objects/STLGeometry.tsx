@@ -11,7 +11,7 @@ type IconProps = {
   depth?: number
 }
 
-export function Icon({url, width = 1, height = 1, depth = 1}: IconProps): JSX.Element {
+export function STLGeometry({url, width = 1, height = 1, depth = 1}: IconProps): JSX.Element {
   const [baseGeom] = useLoader<THREE.BufferGeometry, string[]>(STLLoader, [url])
   const geom = useMemo(() => {
     baseGeom.computeBoundingBox()

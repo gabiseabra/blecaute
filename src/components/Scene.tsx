@@ -1,9 +1,9 @@
 import React, { useRef, useCallback } from 'react'
-import { Spotlight } from './objects/Spotlight'
-import { DichromaticMaterial } from './materials/Dichromatic'
-import { ThreeEvent } from '@react-three/fiber'
 import * as THREE from 'three'
+import { ThreeEvent } from '@react-three/fiber'
 import { BG_COLOR } from '../config'
+import { FlashLight } from './objects/FlashLight'
+import { DichromaticMaterial } from './materials/Dichromatic'
 import { LandingPage } from './pages/LandingPage'
 
 export function Scene({}): JSX.Element {
@@ -14,7 +14,7 @@ export function Scene({}): JSX.Element {
   return (
     <>
       <ambientLight color={'red'} intensity={1} />
-      <Spotlight target={pointer} />
+      <FlashLight target={pointer} />
       <group position={[0,0,0]}>
         <mesh
           receiveShadow
