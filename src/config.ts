@@ -21,7 +21,7 @@ export const COLOR_BG = '#ff949f'
 
 export const FONT_CURSIVE: string = require('url:./fonts/LongCang-Regular.ttf')
 
-export const FONT_SIZE_SM = 0.2
+export const FONT_SIZE_SM = 0.25
 export const FONT_SIZE_MD = 0.4
 export const FONT_SIZE_LG = 0.6
 
