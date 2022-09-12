@@ -8,6 +8,6 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   <Canvas shadows>
     <PerspectiveCamera makeDefault position={[0,0,10]} fov={45} />
     <Scene />
-    <OrbitControls />
+    {/* <OrbitControls /> */}
   </Canvas>
 )
