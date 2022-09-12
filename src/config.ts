@@ -56,6 +56,8 @@ export const INSTA_COLOR: DichromaticMaterialProps = {
   contrast: 2
 }
 
-export const FLASHLIGHT_COLOR = {
-  color: 0xffffff
-} as const
+export const FLASHLIGHT_COLOR: DichromaticMaterialProps = {
+  ambient: Chroma.mix(COLOR_BG, COLOR_SHADOW, 0.5).hex(),
+  diffuse: Chroma.mix(COLOR_BG, 'hotpink', 0.2).hex(),
+  contrast: 1.5
+}

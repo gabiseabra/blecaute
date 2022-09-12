@@ -1,19 +1,17 @@
 import React, { useRef, useEffect, useMemo } from 'react'
 import * as THREE from 'three'
-import { SpotLight } from '@react-three/drei'
+import { SpotLight as BaseSpotLight } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { FLASHLIGHT_COLOR } from '../../../config'
-import { STLGeometry } from '../STLGeometry'
+import { GLTFGeometry } from '../GLTFGeometry'
+import { DichromaticMaterial } from '../../materials/Dichromatic'
 
-const meshRotation = new THREE.Euler(0,1.58,.73)
-
-export function FlashLight({ target }: {
+export function FlashLight({ target, z = 0 }: {
   target: React.RefObject<THREE.Vector3>
+  z?: number
 }): JSX.Element {
   const meshRef = useRef<THREE.Group>(null)
-  const lightRef = useRef<THREE.SpotLight>(null)
-  const three = useThree()
-  const position = useMemo(() => new THREE.Vector3(0, 0, 5), [])
+  const position = useMemo(() => new THREE.Vector3(0, 0, z), [])
   const lookAt = useMemo(() => new THREE.Vector3(0), [])
 
   useFrame(() => {
@@ -26,37 +24,62 @@ export function FlashLight({ target }: {
 
     meshRef.current?.lookAt(lookAt)
     meshRef.current?.position.copy(position)
+  })
+
+  return (
+    <group
+      ref={meshRef}
+      position={[0,0,5]}
+      scale={.25}
+      >
+      <mesh receiveShadow castShadow>
+        <GLTFGeometry url={require('url:./geometry.gltf')} />
+        <DichromaticMaterial {...FLASHLIGHT_COLOR} />
+      </mesh>
+    </group>
+  )
+}
+
+export function SpotLight({ target, z = 0 }: {
+  target?: React.RefObject<THREE.Vector3> | [number, number, number]
+  z?: number
+}): JSX.Element {
+  const lightRef = useRef<THREE.SpotLight>(null)
+  const three = useThree()
+  const position = useMemo(() => new THREE.Vector3(0, 0, z), [])
+  const lookAt = useMemo(() => new THREE.Vector3(0), [])
+
+  useFrame(() => {
+    if (!target || !('current' in target) || !target.current) return
+
+    const lightPosScale = 0.4
+
+    lookAt.setX(target.current.x)
+    lookAt.setY(target.current.y)
+    position.setX(target.current.x * lightPosScale)
+    position.setY(target.current.y * lightPosScale)
+
     lightRef.current?.position.copy(position)
     lightRef.current?.target.position.copy(lookAt)
   })
 
   useEffect(() => {
-    three.scene.add(lightRef.current!.target);    
+    three.scene.add(lightRef.current!.target);
+    if (target && !('current' in target))
+      three.scene.lookAt(...target)
   }, [])
 
   return (
-    <>
-      <group
-        ref={meshRef}
-        position={[0,0,5]}
-        scale={[.5,.5,-.5]}
-        >
-        <mesh rotation={meshRotation} position={[0,-.68, 0]}>
-          <STLGeometry url={require('url:./geometry.stl')} />
-          <meshBasicMaterial {...FLASHLIGHT_COLOR} />
-        </mesh>
-      </group>
-      <SpotLight
-        castShadow
-        ref={lightRef}
-        distance={20}
-        intensity={.5}
-        penumbra={0}
-        decay={0}
-        angle={.4}
-        color={'red'}
-        position={[0,0,5]}
-      />
-    </>
+    <BaseSpotLight
+      castShadow
+      ref={lightRef}
+      distance={20}
+      intensity={.5}
+      penumbra={0}
+      decay={0}
+      angle={.4}
+      color={'red'}
+      position={position}
+    />
   )
 }
