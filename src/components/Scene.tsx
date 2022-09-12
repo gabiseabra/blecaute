@@ -15,7 +15,7 @@ export function Scene({}): JSX.Element {
     <>
       <ambientLight color={'red'} intensity={1} />
       <Spotlight target={pointer} />
-      <group position={[0,0,-1]}>
+      <group position={[0,0,0]}>
         <mesh
           receiveShadow
           position={[0,0,-.0001]}

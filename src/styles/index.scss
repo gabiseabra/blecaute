@@ -5,3 +5,13 @@ html, body, #root {
   height: 100vh;
   overscroll-behavior: none;
 }
+
+a.instagram {
+  position: fixed;
+}
+
+a.email {
+  position: fixed;
+  margin-top: 100%;
+  transform: translateY(100%);
+}

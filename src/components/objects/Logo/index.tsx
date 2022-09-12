@@ -20,7 +20,6 @@ export function Logo({ width }: LogoProps): JSX.Element {
       geometry.boundingBox!.max.x + geometry.boundingBox!.min.x,
       geometry.boundingBox!.max.y + geometry.boundingBox!.min.y
     ])
-    console.log(geometry.boundingBox)
   }, [])
   const visible = Boolean(size[0] && size[1])
   const scale = visible ? width / size[0] : 1

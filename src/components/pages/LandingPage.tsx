@@ -7,6 +7,7 @@ import { mapBreakpoint } from '../../config'
 import { InstagramIcon } from '../icons/Instagram'
 import { CurvedArrowIcon } from '../icons/CurvedArrow'
 import * as THREE from 'three'
+import { SyncPosition } from '../containers/SyncPosition'
 
 const topRow = (size: Size) => (rowWidth: number): JSX.Element => {
   const colWidth = rowWidth * mapBreakpoint({
@@ -66,10 +67,16 @@ const contactRow = (size: Size) => (rowWidth: number, rowHeight: number) => {
   }, size)
   return (
     <>
-      <InstagramIcon scale={iconSize} depth={0.1} />
-      <Text size={textSize} position={[iconSize + .5, iconSize *.7, 0]}>
-        contato@blecaute.tv
-      </Text>
+      <SyncPosition at=".instagram">
+        {(onUpdate) => <InstagramIcon scale={iconSize} depth={0.1} onUpdate={onUpdate} />}
+      </SyncPosition>
+      <SyncPosition at=".email">
+        {(onUpdate) => (
+          <Text size={textSize} position={[iconSize + .5, iconSize *.7, 0]} onUpdate={onUpdate}>
+            contato@blecaute.tv
+          </Text>
+        )}
+      </SyncPosition>
       <group position={contactPosition} scale={contactScale}>
         <Text
           size="md"
@@ -94,6 +101,8 @@ export function LandingPage({}): JSX.Element {
   const flexRef = useRef(null)
   return (
     <Flex
+      pr={.25}
+      pl={.25}
       ref={flexRef}
       size={[viewport.width, viewport.height, 0]}
       position={[
@@ -120,6 +129,7 @@ export function LandingPage({}): JSX.Element {
       </Box>
       <Box
         width="100%"
+        maxWidth={12}
         height="50%"
         shrink={1}
         dir="column"
