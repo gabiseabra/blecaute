@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { RootState, Size, useThree } from 'react-three-fiber'
+import { RootState, Size, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
 

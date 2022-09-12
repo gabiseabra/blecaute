@@ -1,10 +1,9 @@
 
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
-import { mergeBufferGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils'
-import { MeshProps } from 'react-three-fiber'
+import { MeshProps } from '@react-three/fiber'
 
 type GLTFGeometryProps = {
   url: string

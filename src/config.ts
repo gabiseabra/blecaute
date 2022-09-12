@@ -1,6 +1,6 @@
 import { DichromaticMaterialProps } from './components/materials/Dichromatic'
 import Chroma from 'chroma-js'
-import { Size, useThree } from 'react-three-fiber'
+import { Size, useThree } from '@react-three/fiber'
 
 type Breakpoint = "sm" | "lg"
 
