@@ -2,6 +2,7 @@ import React from 'react'
 import { DichromaticMaterial } from '../../materials/Dichromatic'
 import { Icon } from "../../objects/Icon"
 import * as THREE from 'three'
+import { INSTA_COLOR } from '../../../config'
 
 export function InstagramIcon({scale, position, onUpdate, ...props}: {
   scale?: THREE.Vector3 | number
@@ -14,7 +15,7 @@ export function InstagramIcon({scale, position, onUpdate, ...props}: {
   return (
     <mesh castShadow scale={scale} position={position} onUpdate={onUpdate}>
       <Icon url={require('url:./icon.stl')} {...props} />
-      <DichromaticMaterial diffuse={0xffc869} contrast={2} />
+      <DichromaticMaterial {...INSTA_COLOR} />
     </mesh>
   )
 }

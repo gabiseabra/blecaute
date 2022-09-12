@@ -16,6 +16,12 @@ export function useBreakpoint() {
   return getBreakpoint(size)
 }
 
+export const MAIN_TEXT = `
+Lorem ipsum dolor sit amet,
+consectetur adipiscing elit
+consectetur adipiscing elit
+consectetur adipiscing elit
+`
 export const COLOR_SHADOW = '#000a94'
 export const COLOR_LOGO = '#ff949f'
 export const COLOR_BG = '#ff949f'
@@ -42,4 +48,10 @@ export const LOGO_COLOR: DichromaticMaterialProps = {
   // ambient: Chroma.blend(COLOR_LOGO, COLOR_SHADOW, 'screen').hex(),
   diffuse: COLOR_LOGO,
   contrast: 1.5
+}
+
+export const INSTA_COLOR: DichromaticMaterialProps = {
+  ambient: COLOR_SHADOW,
+  diffuse: 0xffc869,
+  contrast: 2
 }

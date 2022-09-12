@@ -3,7 +3,7 @@ import { Flex, Box } from '@react-three/flex'
 import { Size, useThree } from '@react-three/fiber'
 import { Logo } from '../objects/Logo'
 import Text from '../objects/Text'
-import { mapBreakpoint } from '../../config'
+import { MAIN_TEXT, mapBreakpoint } from '../../config'
 import { InstagramIcon } from '../icons/Instagram'
 import { CurvedArrowIcon } from '../icons/CurvedArrow'
 import * as THREE from 'three'
@@ -34,10 +34,7 @@ const topRow = (size: Size) => (rowWidth: number): JSX.Element => {
           0.0001
         ]}
       >
-        Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit
-        consectetur adipiscing elit
-        consectetur adipiscing elit
+        {MAIN_TEXT}
       </Text>
     </Box>
   )
