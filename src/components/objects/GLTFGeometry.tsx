@@ -63,14 +63,12 @@ export function GLTFGeometry({
         depth
       )])
   ), [nodes])
-  console.log(geom)
   
   return (
     <>
-        <primitive object={geom[0][1]} attach="geometry" />
-      {/* {geom.map(([k, v]) => (
+      {geom.map(([k, v]) => (
         <primitive key={k} object={v} attach="geometry" />
-      ))} */}
+      ))}
     </>
   )
 }
@@ -106,7 +104,6 @@ export const mkGLTFMesh = <Props = GLTFMeshProps>(
       </mesh>
     )
   }
-  GLTFMesh.name = `GLTFMesh(${url})`
   useGLTF.preload(url)
   return GLTFMesh
 }
