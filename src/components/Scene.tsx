@@ -6,7 +6,6 @@ import { FlashLight, SpotLight } from './objects/FlashLight'
 import { DichromaticMaterial } from './materials/Dichromatic'
 import { LandingPage } from './pages/LandingPage'
 import { Layer } from './objects/Layer'
-import { InstagramIcon } from './icons/Instagram'
 
 const flashLightPosition = new THREE.Vector3(0,0,5)
 

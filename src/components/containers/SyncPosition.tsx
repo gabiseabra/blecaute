@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { RootState, Size, useThree } from '@react-three/fiber'
+import { RootState, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
 
@@ -18,23 +18,6 @@ function projectCoord(
   v3.project( camera );
   v3.x = Math.round(( v3.x + 1 ) * width / 2 );
   v3.y = Math.round(( 1 - v3.y ) * height / 2 );
-}
-
-function getCoordinates(
-  mesh: THREE.Mesh,
-  camera: THREE.Camera,
-  { width, height }: Size
-): THREE.Vector3 {
-  const v3 = new THREE.Vector3();
-
-  mesh.localToWorld( v3 );
-
-  v3.project( camera );
-
-  v3.x = Math.round(( v3.x + 1 ) * width / 2 );
-  v3.y = Math.round(( 1 - v3.y ) * height / 2 );
-
-  return v3
 }
 
 export function SyncPosition({ at, children }: {
